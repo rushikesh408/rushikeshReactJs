@@ -22,7 +22,7 @@ root.render(
         <Route path="" Component={Home} />
         <Route path="/cooourses" Component={Courses}/>
         <Route path="/profileUpdate" Component={ProfileUpdate}/>
-       <Route path="/api-reading" Component={GettingProducts}/>
+        <Route path="/api-reading" Component={GettingProducts}/>
 
 
       </Routes>
