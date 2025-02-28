@@ -43,6 +43,11 @@ function Navigation() {
                   Get Prducts
                 </a>
               </li>
+              <li className="nav-item">
+                <a href="/get-users" className="nav-link">
+                  Get Users
+                </a>
+              </li>
             </ul>
          
         </div>

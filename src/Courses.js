@@ -2,9 +2,12 @@ import Navigation from "./NavBar/Navigation";
 import Footer from "./HeadersAndFooters/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Product from "./Product.js";
 
 function Courses() {
   let [products, setproducts] = useState([]);
+  let [numberofCartItems, setnumberofCartItems] = useState(0);
+  let [productClicked, setProductClicked] = useState("")
 
   useEffect(() => {
     async function getProductsfromAPI() {
@@ -12,13 +15,12 @@ function Courses() {
       var prodapiresponse = await axios.get("https://dummyjson.com/products");
       console.log("API var set HERE");
 
-     
       console.log(products);
 
       let data = prodapiresponse.data.products.map((product) => {
         product.is_favourite = false;
         return product;
-      }, [])
+      }, []);
 
       setproducts(data);
       console.log(" api updated here");
@@ -28,29 +30,41 @@ function Courses() {
     getProductsfromAPI();
   }, []);
 
+
+  function updateCart(){
+
+    setnumberofCartItems(numberofCartItems+1)
+  }
+
+  function removecart(){
+    setnumberofCartItems(numberofCartItems-1)
+  }
+
+  function userClikedproduct(e){
+    console.log("title clicked")
+    console.log(e)
+    setProductClicked(e)
+  }
+
   function getproductdetailstoadd(data) {
     let favprod = products.map((product) => {
-
       if (data.id == product.id) {
-        console.log("data here")
-        console.log(product)
-        console.log(data)
-        console.log(data.id)
-        console.log(data.is_favourite)
-        console.log(product.id)
-        console.log(product.is_favourite)
+        console.log("data here");
+        console.log(product);
+        console.log(data);
+        console.log(data.id);
+        console.log(data.is_favourite);
+        console.log(product.id);
+        console.log(product.is_favourite);
         if (data.is_favourite == false) {
-          console.log("falsetotrue")
+          console.log("falsetotrue");
           product.is_favourite = true;
-
         } else {
-          console.log("true to false")
+          console.log("true to false");
           product.is_favourite = false;
         }
-       
       }
-      return product
-     
+      return product;
     });
 
     setproducts(favprod);
@@ -68,28 +82,14 @@ function Courses() {
       </div>
 
       <div className="row mt-5 mb-5">
+        number of cart items = {numberofCartItems}
+      </div>
+      <div>
+        User clicked = {productClicked}
+      </div>
+      <div className="row mt-5 mb-5">
         {products.map((product) => (
-          <div className="col-3">
-            <div className="card shadow ">
-              <img src={product.thumbnail} className="card-img-top"></img>
-
-              <div className="card body">
-                <div className="card-title"> {product.brand} </div>
-
-                <p className="card-text"> {product.description} </p>
-              </div>
-              <div className="card-footer">
-                <button
-                  className="btn btn-primary"
-                  onClick={(e) => getproductdetailstoadd(product)}
-                >
-                  <i class="bi bi-bag-heart-fill"> </i>
-                  {product.is_favourite == true && <span> Remove</span>}
-                  {product.is_favourite == false && <span> Add</span>}
-                </button>
-              </div>
-            </div>
-          </div>
+          <Product product={product} updatecartvar = {updateCart} removecartitems = {removecart} userClikedproductvar = {userClikedproduct}/>
         ))}
       </div>
 
