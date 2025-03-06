@@ -11,6 +11,7 @@ import Courses from "./Courses";
 import ProfileUpdate from "./ProfileUpdate";
 import GettingProducts from "./ReadingAPI's/GettingProducts";
 import UserList from "./Users/UserList";
+import GetRegisteredCourses from "./GetRegisteredCourses";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -25,6 +26,7 @@ root.render(
         <Route path="/profileUpdate" Component={ProfileUpdate}/>
         <Route path="/api-reading" Component={GettingProducts}/>
         <Route path="/get-users" Component={UserList}/>
+        <Route path="/registeredCourses" Component={GetRegisteredCourses}/>
 
 
       </Routes>

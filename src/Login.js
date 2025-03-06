@@ -53,6 +53,8 @@ function Login(){
         console.log(displaynameapp)
 
           localStorage.setItem('rushikshtechID',apipassingdata.data.data.userId)
+          localStorage.setItem('rushikeshtechTokenid',apipassingdata.data.data.token
+          )
 
           //window.location = '/'
         }
