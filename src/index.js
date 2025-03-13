@@ -12,11 +12,15 @@ import ProfileUpdate from "./ProfileUpdate";
 import GettingProducts from "./ReadingAPI's/GettingProducts";
 import UserList from "./Users/UserList";
 import GetRegisteredCourses from "./GetRegisteredCourses";
+import CounterRedux from "./ReduxClassComponent/CounterRedux";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+
+  <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path="/login" Component={Login} />
@@ -27,11 +31,14 @@ root.render(
         <Route path="/api-reading" Component={GettingProducts}/>
         <Route path="/get-users" Component={UserList}/>
         <Route path="/registeredCourses" Component={GetRegisteredCourses}/>
+        <Route path="/redux-users" Component={CounterRedux}/>
 
 
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+  </Provider>
+
+
 );
 
 // If you want to start measuring performance in your app, pass a function

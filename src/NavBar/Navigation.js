@@ -1,4 +1,12 @@
+import { useSelector } from "react-redux";
+
 function Navigation() {
+
+
+  let countnumber = useSelector(state => state.countnumber)
+
+
+
   return (
     <nav className="navbar shadow mt-3 navbar-expand-lg">
       <div className="container">
@@ -14,7 +22,7 @@ function Navigation() {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <a href="/" className="nav-link">
-                  Home
+                  Home {countnumber}
                 </a>
               </li>
               <li className="nav-item">
@@ -51,6 +59,11 @@ function Navigation() {
               <li className="nav-item">
                 <a href="/get-users" className="nav-link">
                   Get Users
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="/redux-users" className="nav-link">
+                  Redux Counter
                 </a>
               </li>
             

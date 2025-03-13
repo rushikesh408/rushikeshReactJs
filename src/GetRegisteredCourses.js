@@ -14,7 +14,7 @@ function GetRegisteredCourses() {
     }
 
     async function apicalledtoCourses(){
-        let apicall = await customApi.post("https://api.softwareschool.co/courses/getPurchasedCourses",userid)
+        let apicall = await ApiCustom.post("https://api.softwareschool.co/courses/getPurchasedCourses",userid)
         console.log(apicall)
     }
     apicalledtoCourses()
